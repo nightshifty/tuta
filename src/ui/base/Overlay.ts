@@ -86,7 +86,8 @@ export const overlay: Component<OverlayParentAttrs> = {
 			{
 				inert: !visible,
 				style: {
-					"margin-top": "env(safe-area-inset-top)", // insets for iPhone X
+					// env() returns 0px on Android, so use the css variable which is set by the native app there (and maps to env() elsewhere)
+					"margin-top": "var(--safe-area-inset-top)",
 					// keep the bottom nav bar clear & inset for iOS
 					"margin-bottom": bottomMargin ? px(bottomMargin) : "unset",
 					// we would need to change this if we wanted something to appear from the side
